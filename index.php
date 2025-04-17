@@ -64,7 +64,7 @@ if (isset($_SESSION['user_id'])) {
                 </a>
             <?php else: ?>
                 <a 
-                    href="/register.php" 
+                    href="register.php" 
                     class="bg-white text-blue-600 px-8 py-3 rounded-lg font-bold text-lg hover:bg-blue-100 transition-colors"
                 >
                     Зарегистрироваться
@@ -96,7 +96,7 @@ if (isset($_SESSION['user_id'])) {
                                 </a>
                             <?php else: ?>
                                 <a 
-                                    href="/login.php" 
+                                    href="login.php" 
                                     class="block w-full text-center bg-blue-600 text-white py-2 rounded font-medium hover:bg-blue-700 transition-colors"
                                 >
                                     Войти для заказа

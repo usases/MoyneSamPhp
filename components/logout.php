@@ -7,6 +7,6 @@ $_SESSION = array();
 session_destroy();
 
 // Перенаправляем на страницу входа
-header("Location: \Moyne Sam\login.php");
+header("Location: ../index.php");
 exit;
 ?>
