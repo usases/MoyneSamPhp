@@ -155,3 +155,35 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+
+
+CREATE TABLE `service_requests` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `service_type_id` int(11) NOT NULL,
+  `address` text NOT NULL,
+  `contact_info` text NOT NULL,
+  `date_time` datetime NOT NULL,
+  `payment_type` enum('cash','card','online') NOT NULL DEFAULT 'cash',
+  `status` enum('new','in_progress','completed','cancelled') NOT NULL DEFAULT 'new',
+  `cancellation_reason` text DEFAULT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+
+DELIMITER //
+
+CREATE TRIGGER `before_update_service_requests`
+BEFORE UPDATE ON `service_requests`
+FOR EACH ROW
+BEGIN
+  SET NEW.updated_at = CURRENT_TIMESTAMP;
+END//
+
+DELIMITER ;
+
+
